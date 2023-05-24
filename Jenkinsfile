@@ -70,11 +70,7 @@ pipeline {
                         sh '''#!/bin/bash
                         aws --region ${AWS_REGION} eks update-kubeconfig --name ${KUBERNETES_BLUE_CLUSTER_NAME}
                         source prepare.sh 
-                        ls
-                        pwd
                         cd translator-ops/ops/improving-agent/improving-agent/
-                        ls
-                        pwd
                         /bin/bash deploy.sh
                         '''
                     }
