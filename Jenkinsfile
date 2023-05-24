@@ -72,6 +72,7 @@ pipeline {
                         source prepare.sh 
                         cd translator-ops/ops/improving-agent/improving-agent/
                         /bin/bash deploy.sh
+                        cat deploy.sh
                         '''
                     }
                 }
