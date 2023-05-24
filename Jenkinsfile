@@ -67,9 +67,9 @@ pipeline {
                     configFile(fileId: 'prepare.sh', targetLocation: 'prepare.sh')
                 ]){
                     script {
-                        sh '''
+                        sh '''#!/bin/bash
                         aws --region ${AWS_REGION} eks update-kubeconfig --name ${KUBERNETES_BLUE_CLUSTER_NAME}
-                        /bin/bash prepare.sh 
+                        source prepare.sh 
                         ls
                         pwd
                         cd translator-ops/ops/improving-agent/improving-agent/
@@ -80,12 +80,12 @@ pipeline {
                     }
                 }
             }
-            post {
-                always {
-                    echo " Clean up the workspace in deploy node!"
-                    cleanWs()
-                }
-            }
+            // post {
+            //     always {
+            //         echo " Clean up the workspace in deploy node!"
+            //         cleanWs()
+            //     }
+            // }
         }
     }
 }
